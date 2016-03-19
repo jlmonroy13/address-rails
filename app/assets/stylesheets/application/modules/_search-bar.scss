@@ -23,7 +23,7 @@
     border: none;
     border-radius: 5px;
     @include font-size(18px);
-    background: url("../images/search-icon.png") no-repeat;
+    background: url("search-icon.png") no-repeat;
     background-position: 1em center;
     background-color: #F18360;   
     &:focus {

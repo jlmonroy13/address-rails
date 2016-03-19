@@ -14,4 +14,4 @@
 //= require jquery/dist/jquery
 //= require angular/angular
 
-//= require ./angular/angular
+//= require ./address_book/address_book

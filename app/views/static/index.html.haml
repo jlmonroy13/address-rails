@@ -8,74 +8,96 @@
 / ========= POP CONTACT ADD =========
 .pop-contact.js-pop-expanded
   %p Nuevo contacto añadido
-.address-book
+.address-book{:"ng-controller" => "contactsController as contactsCtrl"} 
   / ========= FAVORITES =========
   %h2.address-book__title Favoritos
   %table.contacts
     %tbody.js-favorites
+      %tr{:"ng-repeat" => "contact in contactsCtrl.contacts | filter: {favorite: true}"}
+        %td.contact.contact--name
+          %span.contact__avatar
+          %a.js-contactInfo{:href => "#contact-overlay"}
+            %p.contact__name{:"ng-click" => "contactsCtrl.currentContact(contact)"}{{contact.first_name + " " + contact.last_name}}
+        %td.contact.contact--email
+          %span.icon-mail.icon-set.icon-set--dark-gray
+          %p.contact__info {{contact.email}}
+        %td.contact.contact--phone
+          %span.icon-phone.icon-set.icon-set--dark-gray
+          %p.contact__info {{contact.phone}}
+        %td.contact.contact--favorite
+          %a.js-addFavorite{:href => "#"}
+            %span.icon-star.icon-set{:"ng-class" => "{'icon-set--yellow' : contact.favorite, 'icon-set--light-gray' : !contact.favorite}", :"ng-click" => "contactsCtrl.toggleFavorite(contact)"} 
   / ========= ALL =========
   %h2.address-book__title Todos
   %table.contacts
     %tbody.js-allContacts
+      %tr{:"ng-repeat" => "contact in contactsCtrl.contacts"}
+        %td.contact.contact--name
+          %span.contact__avatar
+          %a.js-contactInfo{:href => "#contact-overlay"}
+            %p.contact__name{:"ng-click" => "contactsCtrl.currentContact(contact)"}{{contact.first_name + " " + contact.last_name}}
+        %td.contact.contact--email
+          %span.icon-mail.icon-set.icon-set--dark-gray
+          %p.contact__info {{contact.email}}
+        %td.contact.contact--phone
+          %span.icon-phone.icon-set.icon-set--dark-gray
+          %p.contact__info {{contact.phone}}
+        %td.contact.contact--favorite
+          %a.js-addFavorite{:href => "#"}
+            %span.icon-star.icon-set{:"ng-class" => "{'icon-set--yellow' : contact.favorite, 'icon-set--light-gray' : !contact.favorite}", :"ng-click" => "contactsCtrl.toggleFavorite(contact)"}
   %a.js-addContact{:href => "#contact-overlay"}
     %span.add-contact +
-/ ========= CONTACT MODAL =========
-#contact-overlay.contact-overlay
-  .contact-modal
-    .grid
-      .grid__item.lap--four-fifths.desk--two-thirds
-        .contact-modal__container
-          .grid
-            / ========= PHOTO =========
-            .grid__item.lap--one-whole.desk--three-tenths
-              %img.contact-modal__photo{:alt => "Foto del Contacto", :src => "assets/user-photo.png"}
-                %p.contact-modal__name.js-modal-name
-                %a.js-modalAddFavorite.button.button--confirmation{:href => "#"} AGREGAR A FAVORITOS
-                %a.js-delete.button.button--delete{:href => "#"} BORRAR CONTACTO
-            /
-            .grid__item.lap--one-whole.desk--seven-tenths
-              %form.contact-information
-                %h1.contact-information__title Contacto
-                / ========= NAME =========
-                .grid
-                  .grid__item.three-tenths
-                    %span.icon-twitter.icon-set.icon-set--empty
-                    %label.contact-information__label{:for => "name"} Nombre:
-                  /
-                  .grid__item.seven-tenths
-                    %input#name.contact-information__input{:type => "text"}
-                / ========= SOCIAL ADDRESS =========
-                .grid
-                  .grid__item.three-tenths
-                    %span.icon-twitter.icon-set.icon-set--blue
-                    %label.contact-information__label{:for => "social-addres"} Twitter:
-                  /
-                  .grid__item.seven-tenths
-                    %input#social-addres.contact-information__input{:type => "text"}
-                / ========= EMAIL =========
-                .grid
-                  .grid__item.three-tenths
-                    %span.icon-mail.icon-set.icon-set--dark-gray
-                    %label.contact-information__label{:for => "email"} Email:
-                  /
-                  .grid__item.seven-tenths
-                    %input#email.contact-information__input{:type => "text"}
-                / ========= PHONE =========
-                .grid
-                  .grid__item.three-tenths
-                    %span.icon-phone.icon-set.icon-set--dark-gray
-                    %label.contact-information__label{:for => "phone"} Teléfono:
-                  /
-                  .grid__item.seven-tenths
-                    %input#phone-number.contact-information__input{:type => "text"}
-                / ========= ADDRESS =========
-                .grid
-                  .grid__item.three-tenths
-                    %span.icon-twitter.icon-set.icon-set--empty
-                    %label.contact-information__label{:for => "address"} Dirección:
-                  /
-                  .grid__item.seven-tenths
-                    %input#address.contact-information__input{:type => "text"}
-              .action-buttons
-                %a.js-cancel.button.button--cancel{:href => "#"} CANCELAR
-                %a.js-saveContact.button.button--confirmation{:href => "#"} GUARDAR
+  / ========= CONTACT MODAL =========
+  #contact-overlay.contact-overlay
+    .contact-modal
+      .grid
+        .grid__item.lap--four-fifths.desk--two-thirds
+          .contact-modal__container
+            .grid
+              / ========= PHOTO =========
+              .grid__item.lap--one-whole.desk--three-tenths
+                %img.contact-modal__photo{:alt => "Foto del Contacto", :src => "assets/user-photo.png"}
+                  %p.contact-modal__name.js-modal-name
+                  %a.js-modalAddFavorite.button.button--confirmation{:href => "#"} AGREGAR A FAVORITOS
+                  %a.js-delete.button.button--delete{:href => "#"} BORRAR CONTACTO
+              .grid__item.lap--one-whole.desk--seven-tenths>
+                %form.contact-information
+                  %h1.contact-information__title Contacto
+                  / ========= NAME =========
+                  .grid
+                    .grid__item.three-tenths
+                      %span.icon-twitter.icon-set.icon-set--empty
+                      %label.contact-information__label{:for => "name"} Nombre:
+                    .grid__item.seven-tenths>
+                      %input#name.contact-information__input{:type => "text", :'ng-model' => "contactsCtrl.currentContact.first_name"}
+                  / ========= SOCIAL ADDRESS =========
+                  .grid
+                    .grid__item.three-tenths
+                      %span.icon-twitter.icon-set.icon-set--blue
+                      %label.contact-information__label{:for => "social-addres"} Twitter:
+                    .grid__item.seven-tenths>
+                      %input#social-addres.contact-information__input{:type => "text", :'ng-model' => "contactsCtrl.currentContact.twitter"}
+                  / ========= EMAIL =========
+                  .grid
+                    .grid__item.three-tenths
+                      %span.icon-mail.icon-set.icon-set--dark-gray
+                      %label.contact-information__label{:for => "email"} Email:
+                    .grid__item.seven-tenths>
+                      %input#email.contact-information__input{:type => "text", :'ng-model' => "contactsCtrl.currentContact.email"}
+                  / ========= PHONE =========
+                  .grid
+                    .grid__item.three-tenths
+                      %span.icon-phone.icon-set.icon-set--dark-gray
+                      %label.contact-information__label{:for => "phone"} Teléfono:
+                    .grid__item.seven-tenths>
+                      %input#phone-number.contact-information__input{:type => "text", :'ng-model' => "contactsCtrl.currentContact.phone"}
+                  / ========= ADDRESS =========
+                  .grid
+                    .grid__item.three-tenths
+                      %span.icon-twitter.icon-set.icon-set--empty
+                      %label.contact-information__label{:for => "address"} Dirección:
+                    .grid__item.seven-tenths>
+                      %input#address.contact-information__input{:type => "text", :'ng-model' => "contactsCtrl.currentContact.address"}
+                .action-buttons
+                  %a.js-cancel.button.button--cancel{:href => "#"} CANCELAR
+                  %a.js-saveContact.button.button--confirmation{:href => "#"} GUARDAR
