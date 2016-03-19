@@ -1,0 +1,105 @@
+/*------------------------------------*\
+             CONTACT MODAL
+\*------------------------------------*/
+.contact-overlay {
+  padding-top: 8.5rem;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0,0,0, 0.63);
+  z-index: 99999;
+  opacity: 0;
+  -webkit-transition: opacity 400ms ease-in;
+  -moz-transition: opacity 400ms ease-in;
+  transition: opacity 400ms ease-in;
+  pointer-events: none;
+  &:target {
+    opacity:1;
+    pointer-events: auto;
+  }
+}
+
+.contact-modal {
+  text-align: center;
+  &__container {
+    padding: 32px;
+    padding-bottom: 20px;
+    background-color: $cream;
+    -webkit-box-shadow: 0px 0px 17px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 17px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 17px 0px rgba(0,0,0,0.75);
+    overflow: auto;
+    height: 450px;
+  }
+  &__photo {
+    margin-bottom: 2.6rem;
+  }
+  &__name {
+    @include font-size(18px);
+    color: black;
+    margin-top: 0;
+    margin-bottom: 1.9285rem;
+  }
+}
+
+.button {
+  padding: 0.923em 1.2307em;
+  -webkit-box-shadow: 0px 4px 22px -6px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 4px 22px -6px rgba(0,0,0,0.75);
+  box-shadow: 0px 4px 22px -6px rgba(0,0,0,0.75);
+  display: inline-block;
+  margin: 0 0.65rem 1rem 0.65rem;
+  &--confirmation {
+    color: white;
+    background-color: $green;
+  }
+  &--cancel {
+    color: white;
+    background-color: $gray-button;
+  }
+  &--delete {
+    color: white;
+    background-color: $orange;
+  }
+}
+
+.action-buttons {
+  text-align: right;
+}
+
+.contact-information {
+  background-color: white;
+  text-align: left;
+  padding: 24px 32px;
+  font-weight: 300;
+  margin-bottom: 2.2rem;
+  -webkit-box-shadow: 0px 6px 28px -8px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 6px 28px -8px rgba(0,0,0,0.75);
+  box-shadow: 0px 6px 28px -8px rgba(0,0,0,0.75);
+  &__title {
+    @include font-size(22px);  
+    font-weight: 300;
+    margin-top: 0;
+    margin-bottom: 2.8rem;
+  }
+  &__label {
+    color: $gray-title;
+    @include font-size(17px);
+    display: inline-block;
+    margin-bottom: 2rem;
+    margin-left: 8px;
+    vertical-align: sub;
+  }
+  &__input {
+    @include font-size(17px);
+    border: none;
+    border-bottom: 1px solid $border-input;
+    width: 100%;
+    &:focus {
+      outline: none;
+      border-color: $highlight-border;
+    }
+  }
+}

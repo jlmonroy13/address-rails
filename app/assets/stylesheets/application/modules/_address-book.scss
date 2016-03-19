@@ -1,0 +1,99 @@
+/*------------------------------------*\
+              ADDRESS BOOK
+\*------------------------------------*/
+.address-book {
+  padding: 3rem 10%;
+  @media (max-width: 530px){
+    padding: 3rem 2%;
+  }
+  &__title {
+    color: $gray-title;
+    @include font-size(16px);
+    font-weight: 400;
+    margin-bottom: 1rem;
+  }
+}
+
+.contacts {            
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  -webkit-box-shadow: 0px 6px 28px -8px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 6px 28px -8px rgba(0,0,0,0.75);
+  box-shadow: 0px 6px 28px -8px rgba(0,0,0,0.75);
+  margin-bottom: 2.3rem;
+}
+
+.contact {
+  border-bottom: 1px solid $gray-border;
+  &__avatar {
+    width: 30px;
+    height: 30px;
+    background: url("../images/user-photo.png");
+    background-size: cover;
+    display: inline-block;
+    margin-left: 15px;
+    vertical-align: middle;
+  }
+  &--social-address {
+    @media (max-width: 630px){
+      display: none;
+    }
+  }
+  &--email {
+    @media (max-width: 860px){
+      display: none;
+    }
+  }
+
+  &__name {
+    display: inline-block;
+    margin-left: 10px;
+    color: $black;
+    vertical-align: middle;
+  }
+  &__info {
+    display: inline-block;
+    margin-left: 5px;
+    color: $dark-gray;
+    font-weight: 300;
+    vertical-align: middle;
+  }
+}
+
+.icon-set {
+  @include font-size(23px);
+  vertical-align: middle;
+  margin-left: 15px;
+  &--blue {
+    color: $blue;
+  }
+  &--dark-gray {
+    color: $dark-gray-icon;
+  }
+  &--yellow {
+    color: $yellow;
+  }
+  &--light-gray {
+    color: $light-gray-icon;
+  }
+  &--empty {
+    color: transparent;
+  }
+}
+
+.add-contact {
+  @include circle(50px, $green);
+  @include font-size(40px);
+  display: block;
+  color: white;
+  text-align: center;
+  z-index: 2;
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  -webkit-box-shadow: 0px 6px 28px -8px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 6px 28px -8px rgba(0,0,0,0.75);
+  box-shadow: 0px 6px 28px -8px rgba(0,0,0,0.75);
+  line-height: 1;
+}

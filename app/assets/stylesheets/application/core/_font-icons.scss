@@ -1,0 +1,39 @@
+@font-face {
+    font-family: 'app-icons';
+    src:    url('app-icons.eot?nmbbge');
+    src:    url('app-icons.eot?nmbbge#iefix') format('embedded-opentype'),
+        url('app-icons.ttf?nmbbge') format('truetype'),
+        url('app-icons.woff?nmbbge') format('woff'),
+        url('app-icons.svg?nmbbge#app-icons') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'app-icons' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-mail:before {
+    content: "\e900";
+}
+.icon-twitter:before {
+    content: "\e901";
+}
+.icon-phone:before {
+    content: "\e902";
+}
+.icon-star:before {
+    content: "\e903";
+}
+

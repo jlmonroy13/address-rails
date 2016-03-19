@@ -1,0 +1,28 @@
+//settings and colors
+
+@import "application/settings/colors";
+@import "application/settings/variables";
+@import "application/core/functions";
+
+//mixins
+@import "application/mixins/mixins";
+
+//Vendor
+// use this area as vendor overwrite area, use other files for actual vendor filesm it is an extra http request, but keep sanity high
+//@import "application/vendor/jquery-ui";
+
+//core styles
+//use placeholders for extends only, always be care with placeholders -> http://csswizardry.com/2014/11/when-to-use-extend-when-to-use-a-mixin/
+@import "application/core/core";
+@import "application/core/font-icons";
+@import "application/core/typography";
+@import "application/core/grid";
+
+
+//objects, use them directly in the html
+
+//modules, the real css that you write everyday based on the design
+@import "application/modules/search-bar";
+@import "application/modules/address-book";
+@import "application/modules/contact-modal";
+@import "application/modules/pop-contact";  

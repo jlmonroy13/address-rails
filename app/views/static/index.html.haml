@@ -1,2 +1,81 @@
-%h1 Static#Index
-%p Fin me at app/views/static/index
+/ ========= SEARCH BAR =========
+%header.search-bar
+  .grid--middle
+    .grid__item.palm--one-whole.lap--one-third.desk--one-third
+      %h1.search-bar__title Koombea Contacts
+    .grid__item.palm--one-whole.lap--one-third.desk--one-third
+      %input.search-bar__input{:placeholder => "Buscar...", :type => "text"}
+/ ========= POP CONTACT ADD =========
+.pop-contact.js-pop-expanded
+  %p Nuevo contacto añadido
+.address-book
+  / ========= FAVORITES =========
+  %h2.address-book__title Favoritos
+  %table.contacts
+    %tbody.js-favorites
+  / ========= ALL =========
+  %h2.address-book__title Todos
+  %table.contacts
+    %tbody.js-allContacts
+  %a.js-addContact{:href => "#contact-overlay"}
+    %span.add-contact +
+/ ========= CONTACT MODAL =========
+#contact-overlay.contact-overlay
+  .contact-modal
+    .grid
+      .grid__item.lap--four-fifths.desk--two-thirds
+        .contact-modal__container
+          .grid
+            / ========= PHOTO =========
+            .grid__item.lap--one-whole.desk--three-tenths
+              %img.contact-modal__photo{:alt => "Foto del Contacto", :src => "assets/user-photo.png"}
+                %p.contact-modal__name.js-modal-name
+                %a.js-modalAddFavorite.button.button--confirmation{:href => "#"} AGREGAR A FAVORITOS
+                %a.js-delete.button.button--delete{:href => "#"} BORRAR CONTACTO
+            /
+            .grid__item.lap--one-whole.desk--seven-tenths
+              %form.contact-information
+                %h1.contact-information__title Contacto
+                / ========= NAME =========
+                .grid
+                  .grid__item.three-tenths
+                    %span.icon-twitter.icon-set.icon-set--empty
+                    %label.contact-information__label{:for => "name"} Nombre:
+                  /
+                  .grid__item.seven-tenths
+                    %input#name.contact-information__input{:type => "text"}
+                / ========= SOCIAL ADDRESS =========
+                .grid
+                  .grid__item.three-tenths
+                    %span.icon-twitter.icon-set.icon-set--blue
+                    %label.contact-information__label{:for => "social-addres"} Twitter:
+                  /
+                  .grid__item.seven-tenths
+                    %input#social-addres.contact-information__input{:type => "text"}
+                / ========= EMAIL =========
+                .grid
+                  .grid__item.three-tenths
+                    %span.icon-mail.icon-set.icon-set--dark-gray
+                    %label.contact-information__label{:for => "email"} Email:
+                  /
+                  .grid__item.seven-tenths
+                    %input#email.contact-information__input{:type => "text"}
+                / ========= PHONE =========
+                .grid
+                  .grid__item.three-tenths
+                    %span.icon-phone.icon-set.icon-set--dark-gray
+                    %label.contact-information__label{:for => "phone"} Teléfono:
+                  /
+                  .grid__item.seven-tenths
+                    %input#phone-number.contact-information__input{:type => "text"}
+                / ========= ADDRESS =========
+                .grid
+                  .grid__item.three-tenths
+                    %span.icon-twitter.icon-set.icon-set--empty
+                    %label.contact-information__label{:for => "address"} Dirección:
+                  /
+                  .grid__item.seven-tenths
+                    %input#address.contact-information__input{:type => "text"}
+              .action-buttons
+                %a.js-cancel.button.button--cancel{:href => "#"} CANCELAR
+                %a.js-saveContact.button.button--confirmation{:href => "#"} GUARDAR
