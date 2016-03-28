@@ -11,8 +11,17 @@ angular.module('addressBook').factory('contactsFactory', ['$http', function($htt
       return response.data.contact
     });
   }
+  function update(contact){
+    var updateUrl = apiUrl + "/" + (contact.id).toString();
+    $http.put(updateUrl, contact).then(function () {});
+  }
+  function post(contact){
+    $http.post(apiUrl, contact).then(function () {});
+  }
   return {
     fetch: fetch,
-    find: find
+    find: find,
+    update: update,
+    post: post
   };
 }])

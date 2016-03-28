@@ -17,7 +17,7 @@
         %td.contact.contact--name
           %span.contact__avatar
           %a.js-contactInfo{:href => "#contact-overlay"}
-            %p.contact__name{:"ng-click" => "contactsCtrl.currentContact(contact)"}{{contact.first_name + " " + contact.last_name}}
+            %p.contact__name{:"ng-click" => "contactsCtrl.assignCurrentContact(contact)"}{{contact.first_name + " " + contact.last_name}}
         %td.contact.contact--email
           %span.icon-mail.icon-set.icon-set--dark-gray
           %p.contact__info {{contact.email}}
@@ -35,7 +35,7 @@
         %td.contact.contact--name
           %span.contact__avatar
           %a.js-contactInfo{:href => "#contact-overlay"}
-            %p.contact__name{:"ng-click" => "contactsCtrl.currentContact(contact)"}{{contact.first_name + " " + contact.last_name}}
+            %p.contact__name{:"ng-click" => "contactsCtrl.assignCurrentContact(contact)"}{{contact.first_name + " " + contact.last_name}}
         %td.contact.contact--email
           %span.icon-mail.icon-set.icon-set--dark-gray
           %p.contact__info {{contact.email}}
@@ -45,7 +45,7 @@
         %td.contact.contact--favorite
           %a.js-addFavorite{:href => "#"}
             %span.icon-star.icon-set{:"ng-class" => "{'icon-set--yellow' : contact.favorite, 'icon-set--light-gray' : !contact.favorite}", :"ng-click" => "contactsCtrl.toggleFavorite(contact)"}
-  %a.js-addContact{:href => "#contact-overlay"}
+  %a.js-addContact{:href => "#contact-overlay", :"ng-click" => "contactsCtrl.addNewContact()"}
     %span.add-contact +
   / ========= CONTACT MODAL =========
   #contact-overlay.contact-overlay
@@ -63,13 +63,20 @@
               .grid__item.lap--one-whole.desk--seven-tenths>
                 %form.contact-information
                   %h1.contact-information__title Contacto
-                  / ========= NAME =========
+                  / ========= FIRST NAME =========
                   .grid
                     .grid__item.three-tenths
                       %span.icon-twitter.icon-set.icon-set--empty
                       %label.contact-information__label{:for => "name"} Nombre:
                     .grid__item.seven-tenths>
                       %input#name.contact-information__input{:type => "text", :'ng-model' => "contactsCtrl.currentContact.first_name"}
+                  / ========= LAST NAME =========
+                  .grid
+                    .grid__item.three-tenths
+                      %span.icon-twitter.icon-set.icon-set--empty
+                      %label.contact-information__label{:for => "name"} Apellido:
+                    .grid__item.seven-tenths>
+                      %input#name.contact-information__input{:type => "text", :'ng-model' => "contactsCtrl.currentContact.last_name"}
                   / ========= SOCIAL ADDRESS =========
                   .grid
                     .grid__item.three-tenths
@@ -100,4 +107,10 @@
                       %input#address.contact-information__input{:type => "text", :'ng-model' => "contactsCtrl.currentContact.address"}
                 .action-buttons
                   %a.js-cancel.button.button--cancel{:href => "#"} CANCELAR
-                  %a.js-saveContact.button.button--confirmation{:href => "#"} GUARDAR
+                  %a.js-saveContact.button.button--confirmation{:href => "#", :"ng-click" => "contactsCtrl.updateContacts()"} GUARDAR
+
+
+
+
+
+
