@@ -57,57 +57,58 @@
               / ========= PHOTO =========
               .grid__item.lap--one-whole.desk--three-tenths
                 %img.contact-modal__photo{:alt => "Foto del Contacto", :src => "assets/user-photo.png"}
-                  %p.contact-modal__name.js-modal-name
-                  %a.js-modalAddFavorite.button.button--confirmation{:href => "#"} AGREGAR A FAVORITOS
-                  %a.js-delete.button.button--delete{:href => "#"} BORRAR CONTACTO
+                  %p.contact-modal__name.js-modal-name {{contactsCtrl.currentContact.first_name + " " + contactsCtrl.currentContact.last_name}}
+                  %a.js-modalAddFavorite.button.button--confirmation{:href => "#contact-overlay", :"ng-show" => "!contactsCtrl.newContactFavorite && !contactsCtrl.currentContact.favorite", :"ng-click" => "contactsCtrl.toggleFavorite(contactsCtrl.currentContact)"} AGREGAR FAVORITOS
+                  %a.js-modalAddFavorite.button.button--confirmation{:href => "#contact-overlay", :"ng-show" => "!contactsCtrl.newContactFavorite && contactsCtrl.currentContact.favorite", :"ng-click" => "contactsCtrl.toggleFavorite(contactsCtrl.currentContact)"} QUITAR FAVORITOS
+                  %a.js-delete.button.button--delete{:href => "#", :"ng-hide" => "contactsCtrl.newContactFavorite", :"ng-click" => "contactsCtrl.deleteContact()"} BORRAR CONTACTO
               .grid__item.lap--one-whole.desk--seven-tenths>
-                %form.contact-information
+                %form.contact-information{:name => "contact-form", :"ng-submit" => "contactsCtrl.updateContacts()"}
                   %h1.contact-information__title Contacto
                   / ========= FIRST NAME =========
                   .grid
                     .grid__item.three-tenths
                       %span.icon-twitter.icon-set.icon-set--empty
-                      %label.contact-information__label{:for => "name"} Nombre:
+                      %label.contact-information__label{:for => "first-name"} Nombre:
                     .grid__item.seven-tenths>
-                      %input#name.contact-information__input{:type => "text", :'ng-model' => "contactsCtrl.currentContact.first_name"}
+                      %input#first-name.contact-information__input{:type => "text", :name => "contact_first-name", :required => "", :'ng-model' => "contactsCtrl.currentContact.first_name"}
                   / ========= LAST NAME =========
                   .grid
                     .grid__item.three-tenths
                       %span.icon-twitter.icon-set.icon-set--empty
-                      %label.contact-information__label{:for => "name"} Apellido:
+                      %label.contact-information__label{:for => "last-name"} Apellido:
                     .grid__item.seven-tenths>
-                      %input#name.contact-information__input{:type => "text", :'ng-model' => "contactsCtrl.currentContact.last_name"}
+                      %input#last-name.contact-information__input{:type => "text", :name => "contact_last-name", :'ng-model' => "contactsCtrl.currentContact.last_name"}
                   / ========= SOCIAL ADDRESS =========
                   .grid
                     .grid__item.three-tenths
                       %span.icon-twitter.icon-set.icon-set--blue
-                      %label.contact-information__label{:for => "social-addres"} Twitter:
+                      %label.contact-information__label{:for => "twitter"} Twitter:
                     .grid__item.seven-tenths>
-                      %input#social-addres.contact-information__input{:type => "text", :'ng-model' => "contactsCtrl.currentContact.twitter"}
+                      %input#twitter.contact-information__input{:type => "text", :name => "contact_twitter", :'ng-model' => "contactsCtrl.currentContact.twitter"}
                   / ========= EMAIL =========
                   .grid
                     .grid__item.three-tenths
                       %span.icon-mail.icon-set.icon-set--dark-gray
                       %label.contact-information__label{:for => "email"} Email:
                     .grid__item.seven-tenths>
-                      %input#email.contact-information__input{:type => "text", :'ng-model' => "contactsCtrl.currentContact.email"}
+                      %input#email.contact-information__input{:type => "email", :name => "contact_email", :required => "", :'ng-model' => "contactsCtrl.currentContact.email"}
                   / ========= PHONE =========
                   .grid
                     .grid__item.three-tenths
                       %span.icon-phone.icon-set.icon-set--dark-gray
                       %label.contact-information__label{:for => "phone"} Teléfono:
                     .grid__item.seven-tenths>
-                      %input#phone-number.contact-information__input{:type => "text", :'ng-model' => "contactsCtrl.currentContact.phone"}
+                      %input#phone.contact-information__input{:type => "tel", :name => "contact_phone", :required => "", :'ng-model' => "contactsCtrl.currentContact.phone"}
                   / ========= ADDRESS =========
                   .grid
                     .grid__item.three-tenths
                       %span.icon-twitter.icon-set.icon-set--empty
                       %label.contact-information__label{:for => "address"} Dirección:
                     .grid__item.seven-tenths>
-                      %input#address.contact-information__input{:type => "text", :'ng-model' => "contactsCtrl.currentContact.address"}
-                .action-buttons
-                  %a.js-cancel.button.button--cancel{:href => "#"} CANCELAR
-                  %a.js-saveContact.button.button--confirmation{:href => "#", :"ng-click" => "contactsCtrl.updateContacts()"} GUARDAR
+                      %input#address.contact-information__input{:type => "text", :name => "contact_address", :'ng-model' => "contactsCtrl.currentContact.address"}
+                  .action-buttons
+                    %a.js-cancel.button.button--cancel{:href => "#"} CANCELAR
+                    %button.js-saveContact.button.button--confirmation{:type =>"submit", :onclick => "location.href = '#' "} GUARDAR
 
 
 

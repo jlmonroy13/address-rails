@@ -51,6 +51,14 @@
   box-shadow: 0px 4px 22px -6px rgba(0,0,0,0.75);
   display: inline-block;
   margin: 0 0.65rem 1rem 0.65rem;
+  cursor: pointer;
+  border-style: none;
+  font-size: 1rem;
+  font-weight: 300;
+  font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  &:focus{
+    outline: none;
+  }
   &--confirmation {
     color: white;
     background-color: $green;
@@ -66,10 +74,13 @@
 }
 
 .action-buttons {
-  text-align: right;
+  position: absolute;
+  bottom: -80px;
+  right: -9px;
 }
 
 .contact-information {
+  position: relative;
   background-color: white;
   text-align: left;
   padding: 24px 32px;

@@ -18,10 +18,15 @@ angular.module('addressBook').factory('contactsFactory', ['$http', function($htt
   function post(contact){
     $http.post(apiUrl, contact).then(function () {});
   }
+  function erase(contact){
+    var eraseUrl = apiUrl + "/" + (contact.id).toString();
+    $http.delete(eraseUrl).then(function () {});
+  }
   return {
     fetch: fetch,
     find: find,
     update: update,
-    post: post
+    post: post,
+    erase: erase
   };
 }])
