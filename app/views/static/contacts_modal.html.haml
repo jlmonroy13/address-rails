@@ -1,0 +1,62 @@
+.contact-overlay{:"ng-class" => "{'contact-overlay--visible' : vm.status}"} 
+  .contact-modal
+    .grid
+      .grid__item.lap--four-fifths.desk--two-thirds
+        .contact-modal__container
+          .grid
+            / ========= PHOTO =========
+            .grid__item.lap--one-whole.desk--three-tenths
+              %img.contact-modal__photo{:alt => "Foto del Contacto", :src => "assets/user-photo.png"}
+                %p.contact-modal__name.js-modal-name {{vm.contact.first_name + " " + vm.contact.last_name}}
+                %a.js-modalAddFavorite.button.button--confirmation{:href => "#contact-overlay", :"ng-hide" => "vm.contact.favorite", :"ng-click" => "vm.toggleFavorite()"} AGREGAR FAVORITOS
+                %a.js-modalAddFavorite.button.button--confirmation{:href => "#contact-overlay", :"ng-show" => "vm.contact.favorite", :"ng-click" => "vm.toggleFavorite()"} QUITAR FAVORITOS
+                %button.js-delete.button.button--delete{:"ng-click" => "vm.deleteContact()"} BORRAR CONTACTO
+            .grid__item.lap--one-whole.desk--seven-tenths>
+              %form.contact-information{:name => "contact-form", :"ng-submit" => "vm.updateContacts()"}
+                %h1.contact-information__title 
+                / ========= FIRST NAME =========
+                .grid
+                  .grid__item.three-tenths
+                    %span.icon-twitter.icon-set.icon-set--empty
+                    %label.contact-information__label{:for => "first-name"} Nombre:
+                  .grid__item.seven-tenths>
+                    %input#first-name.contact-information__input{:type => "text", :name => "contact_first-name", :required => "", :'ng-model' => "vm.contact.first_name"}
+                / ========= LAST NAME =========
+                .grid
+                  .grid__item.three-tenths
+                    %span.icon-twitter.icon-set.icon-set--empty
+                    %label.contact-information__label{:for => "last-name"} Apellido:
+                  .grid__item.seven-tenths>
+                    %input#last-name.contact-information__input{:type => "text", :name => "contact_last-name", :'ng-model' => "vm.contact.last_name"}
+                / ========= SOCIAL ADDRESS =========
+                .grid
+                  .grid__item.three-tenths
+                    %span.icon-twitter.icon-set.icon-set--blue
+                    %label.contact-information__label{:for => "twitter"} Twitter:
+                  .grid__item.seven-tenths>
+                    %input#twitter.contact-information__input{:type => "text", :name => "contact_twitter", :'ng-model' => "vm.contact.twitter"}
+                / ========= EMAIL =========
+                .grid
+                  .grid__item.three-tenths
+                    %span.icon-mail.icon-set.icon-set--dark-gray
+                    %label.contact-information__label{:for => "email"} Email:
+                  .grid__item.seven-tenths>
+                    %input#email.contact-information__input{:type => "email", :name => "contact_email", :required => "", :'ng-model' => "vm.contact.email"}
+                / ========= PHONE =========
+                .grid
+                  .grid__item.three-tenths
+                    %span.icon-phone.icon-set.icon-set--dark-gray
+                    %label.contact-information__label{:for => "phone"} Teléfono:
+                  .grid__item.seven-tenths>
+                    %input#phone.contact-information__input{:type => "tel", :name => "contact_phone", :required => "", :'ng-model' => "vm.contact.phone"}
+                / ========= ADDRESS =========
+                .grid
+                  .grid__item.three-tenths
+                    %span.icon-twitter.icon-set.icon-set--empty
+                    %label.contact-information__label{:for => "address"} Dirección:
+                  .grid__item.seven-tenths>
+                    %input#address.contact-information__input{:type => "text", :name => "contact_address", :'ng-model' => "vm.contact.address"}
+                .action-buttons
+                  %a.js-cancel.button.button--cancel{:href => "#", :"ng-click" => "vm.closeModal()"} CANCELAR
+                  %button.js-saveContact.button.button--confirmation{:type =>"submit"} GUARDAR
+

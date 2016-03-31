@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   get 'static/index'
   root 'static#index'
-
+  get 'app/templates/contact_modal' => 'static#contacts_modal'
+  resources :statics
   namespace :api, defaults: { format: :json } do
     scope module: :v1 do
       resources :contacts, only: [:index, :create, :show, :update, :destroy]
