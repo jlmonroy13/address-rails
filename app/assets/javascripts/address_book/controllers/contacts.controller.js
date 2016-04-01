@@ -24,12 +24,12 @@
 
       function openModal(currentContact) {
         vm.modalStatus = true;
-      }
+      };
 
       function updateContact(currentContact){
         vm.assignCurrentContact(currentContact);
         vm.openModal();
-      }
+      };
 
       function addNewContact() {
         vm.currentContact = {};
@@ -41,7 +41,7 @@
           .then(function(data) {
             vm.contacts = data;
         });
-      }
+      };
 
       function toggleFavorite(contact) {
         contact.favorite = !contact.favorite;

@@ -13,35 +13,12 @@
   %h2.address-book__title Favoritos
   %table.contacts
     %tbody.js-favorites
-      %tr.contact__row{:"ng-repeat" => "contact in address.contacts | filter: {favorite: true}"}
-        %td.contact.contact--name{:"ng-click" => "address.updateContact(contact)"}
-          %span.contact__avatar
-          %p.contact__name {{contact.first_name + " " + contact.last_name}}
-        %td.contact.contact--email{:"ng-click" => "address.updateContact(contact)"}
-          %span.icon-mail.icon-set.icon-set--dark-gray
-          %p.contact__info {{contact.email}}
-        %td.contact.contact--phone{:"ng-click" => "address.updateContact(contact)"}
-          %span.icon-phone.icon-set.icon-set--dark-gray
-          %p.contact__info {{contact.phone}}
-        %td.contact.contact--favorite
-          %a.js-addFavorite{:href => "#"}
-            %span.icon-star.icon-set{:"ng-class" => "{'icon-set--yellow' : contact.favorite, 'icon-set--light-gray' : !contact.favorite}", :"ng-click" => "address.toggleFavorite(contact)"} 
+      %tr.contact__row{"contact-row" => "", :"contact" => "contact", :"edit" => "address.updateContact", :"toggle" => "address.toggleFavorite", :"ng-repeat" => "contact in address.contacts | filter: {favorite: true}"}
   / ========= ALL =========
   %h2.address-book__title Todos
   %table.contacts
     %tbody.js-allContacts
-      %tr.contact__row{:"ng-repeat" => "contact in address.contacts | orderBy: 'first_name'"}
-        %td.contact.contact--name{:"ng-click" => "address.updateContact(contact)"}
-          %span.contact__avatar
-          %p.contact__name {{contact.first_name + " " + contact.last_name}}
-        %td.contact.contact--email{:"ng-click" => "address.updateContact(contact)"}
-          %span.icon-mail.icon-set.icon-set--dark-gray
-          %p.contact__info {{contact.email}}
-        %td.contact.contact--phone{:"ng-click" => "address.updateContact(contact)"}
-          %span.icon-phone.icon-set.icon-set--dark-gray
-          %p.contact__info {{contact.phone}}
-        %td.contact.contact--favorite
-          %span.icon-star.icon-set{:"ng-class" => "{'icon-set--yellow' : contact.favorite, 'icon-set--light-gray' : !contact.favorite}", :"ng-click" => "address.toggleFavorite(contact)"}
+      %tr.contact__row{"contact-row" => "", :"contact" => "contact", :"edit" => "address.updateContact", :"toggle" => "address.toggleFavorite", :"ng-repeat" => "contact in address.contacts | orderBy: 'first_name'"}
   %span.add-contact{:"ng-click" => "address.addNewContact()"} +
   / ========= CONTACT MODAL =========
   %contact-modal{:"status" => "address.modalStatus", :"contact" => "address.currentContact", :"delete" => "address.deleteContact", :"update" => "address.updateContacts", :"toggle" => "address.toggleFavorite"}

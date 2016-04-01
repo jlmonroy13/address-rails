@@ -1,0 +1,11 @@
+%td.contact.contact--name{:"ng-click" => "vm.updateContact()"}
+  %span.contact__avatar
+  %p.contact__name {{vm.contact.first_name + " " + vm.contact.last_name}}
+%td.contact.contact--email{:"ng-click" => "vm.updateContact()"}
+  %span.icon-mail.icon-set.icon-set--dark-gray
+  %p.contact__info {{vm.contact.email}}
+%td.contact.contact--phone{:"ng-click" => "vm.updateContact()"}
+  %span.icon-phone.icon-set.icon-set--dark-gray
+  %p.contact__info {{vm.contact.phone}}
+%td.contact.contact--favorite
+  %span.icon-star.icon-set{:"ng-class" => "{'icon-set--yellow' : contact.favorite, 'icon-set--light-gray' : !contact.favorite}", :"ng-click" => "vm.toggleFavorite()"}
